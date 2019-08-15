@@ -5,6 +5,7 @@
   <groupId>io.github.ljnelson</groupId>
   <artifactId>lra-experiment</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
 
   <parent>
     <groupId>org.microbean</groupId>
@@ -37,22 +38,16 @@
 
 
       <dependency>
-        <groupId>org.glassfish.jersey</groupId>
-        <artifactId>jersey-bom</artifactId>
-        <version>2.29</version>
+        <groupId>io.helidon</groupId>
+        <artifactId>helidon-bom</artifactId>
+        <version>1.2.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
 
 
       <!-- Normal dependencies. -->
-      
 
-      <dependency>
-        <groupId>jakarta.ws.rs</groupId>
-        <artifactId>jakarta.ws.rs-api</artifactId>
-        <version>2.1.5</version>
-      </dependency>
 
       <dependency>
         <groupId>org.eclipse.microprofile.lra</groupId>
@@ -71,7 +66,7 @@
         <artifactId>lra-filters</artifactId>
         <version>5.9.6.Final</version>
       </dependency>
-      
+
     </dependencies>
   </dependencyManagement>
 
@@ -91,22 +86,22 @@
 
     <!-- Runtime-scoped dependencies. -->
 
-    
+
     <dependency>
       <groupId>org.jboss.narayana.rts</groupId>
       <artifactId>lra-client</artifactId>
       <scope>runtime</scope>
     </dependency>
 
-    
+    <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-json-binding</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+
     <!-- Provided-scoped dependencies. -->
 
-    
-    <dependency>
-      <groupId>jakarta.ws.rs</groupId>
-      <artifactId>jakarta.ws.rs-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
 
     <dependency>
       <groupId>org.eclipse.microprofile.lra</groupId>
@@ -117,15 +112,68 @@
 
     <!-- Compile-scoped dependencies. -->
 
-    
+    <dependency>
+      <groupId>io.helidon.microprofile.bundles</groupId>
+      <artifactId>helidon-microprofile-2.2</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>org.jboss.narayana.rts</groupId>
       <artifactId>lra-filters</artifactId>
       <scope>compile</scope>
     </dependency>
 
-    
+
   </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.jboss.jandex</groupId>
+          <artifactId>jandex-maven-plugin</artifactId>
+          <version>1.0.6</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/libs</outputDirectory>
+              <overWriteReleases>false</overWriteReleases>
+              <overWriteSnapshots>false</overWriteSnapshots>
+              <overWriteIfNewer>true</overWriteIfNewer>
+              <overWriteIfNewer>true</overWriteIfNewer>
+              <includeScope>runtime</includeScope>
+              <excludeScope>test</excludeScope>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.jboss.jandex</groupId>
+        <artifactId>jandex-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>make-index</id>
+            <goals>
+              <goal>jandex</goal>
+            </goals>
+            <phase>process-classes</phase>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
   <repositories>
     <repository>
@@ -140,5 +188,5 @@
       </snapshots>
     </repository>
   </repositories>
-  
+
 </project>

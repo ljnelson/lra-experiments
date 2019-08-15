@@ -1,0 +1,9 @@
+oracle:
+  ucp:
+    jdbc:
+      PoolDataSource:
+        sampleDataSource:
+          URL: jdbc:h2:mem:sample
+          connectionFactoryClassName: org.h2.jdbcx.JdbcDataSource
+          password: ""
+          user: sa

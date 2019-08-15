@@ -16,6 +16,11 @@
  */
 package io.github.ljnelson.jaxrs;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import javax.sql.DataSource;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -27,6 +32,10 @@ import org.eclipse.microprofile.lra.annotation.ws.rs.LRA;
 @Path("sample")
 public class SampleResource {
 
+  @Inject
+  @Named("sampleDataSource")
+  private DataSource dataSource;
+  
   public SampleResource() {
     super();
   }

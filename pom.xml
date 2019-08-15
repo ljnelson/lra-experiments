@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>io.github.ljnelson</groupId>
+  <artifactId>lra-experiment</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+
+  <parent>
+    <groupId>org.microbean</groupId>
+    <artifactId>microbean-pluginmanagement-pom</artifactId>
+    <version>11</version>
+    <relativePath />
+  </parent>
+
+  <name>LRA Experiment</name>
+  <description>${project.name}</description>
+  <url>http://ljnelson.github.io/${project.artifactId}</url>
+
+  <scm>
+    <connection>scm:git:git@github.com:ljnelson/${project.artifactId}.git</connection>
+    <developerConnection>scm:git:git@github.com:ljnelson/${project.artifactId}.git</developerConnection>
+    <url>https://github.com/ljnelson/${project.artifactId}/</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <organization>
+    <name>Laird Nelson</name>
+    <url>http://https://lairdnelson.wordpress.com/</url>
+  </organization>
+
+  <dependencyManagement>
+    <dependencies>
+
+
+      <!-- Imports. -->
+
+
+      <dependency>
+        <groupId>org.glassfish.jersey</groupId>
+        <artifactId>jersey-bom</artifactId>
+        <version>2.29</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+
+      <!-- Normal dependencies. -->
+      
+
+      <dependency>
+        <groupId>jakarta.ws.rs</groupId>
+        <artifactId>jakarta.ws.rs-api</artifactId>
+        <version>2.1.5</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.eclipse.microprofile.lra</groupId>
+        <artifactId>microprofile-lra-api</artifactId>
+        <version>1.0-20190801.113716-482</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jboss.narayana.rts</groupId>
+        <artifactId>lra-client</artifactId>
+        <version>5.9.6.Final</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jboss.narayana.rts</groupId>
+        <artifactId>lra-filters</artifactId>
+        <version>5.9.6.Final</version>
+      </dependency>
+      
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+
+
+    <!-- Test-scoped dependencies. -->
+
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <type>jar</type>
+      <scope>test</scope>
+    </dependency>
+
+
+    <!-- Runtime-scoped dependencies. -->
+
+    
+    <dependency>
+      <groupId>org.jboss.narayana.rts</groupId>
+      <artifactId>lra-client</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+    
+    <!-- Provided-scoped dependencies. -->
+
+    
+    <dependency>
+      <groupId>jakarta.ws.rs</groupId>
+      <artifactId>jakarta.ws.rs-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.eclipse.microprofile.lra</groupId>
+      <artifactId>microprofile-lra-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+
+    <!-- Compile-scoped dependencies. -->
+
+    
+    <dependency>
+      <groupId>org.jboss.narayana.rts</groupId>
+      <artifactId>lra-filters</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    
+  </dependencies>
+
+  <repositories>
+    <repository>
+      <id>repo.eclipse.org-snapshots</id>
+      <name>Eclipse MicroProfile Repository - Snapshots</name>
+      <url>https://repo.eclipse.org/content/repositories/microprofile-snapshots</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+  
+</project>

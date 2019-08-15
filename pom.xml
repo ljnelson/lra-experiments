@@ -53,6 +53,12 @@
 
       <!-- Normal dependencies. -->
 
+      
+      <dependency>
+        <groupId>javax.transaction</groupId>
+        <artifactId>javax.transaction-api</artifactId>
+        <version>1.2</version>
+      </dependency>
 
       <dependency>
         <groupId>org.eclipse.microprofile.lra</groupId>
@@ -120,6 +126,12 @@
     <!-- Provided-scoped dependencies. -->
 
 
+    <dependency>
+      <groupId>javax.transaction</groupId>
+      <artifactId>javax.transaction-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    
     <dependency>
       <groupId>org.eclipse.microprofile.lra</groupId>
       <artifactId>microprofile-lra-api</artifactId>

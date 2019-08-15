@@ -21,6 +21,8 @@ import javax.inject.Named;
 
 import javax.sql.DataSource;
 
+import javax.transaction.Transactional;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -41,9 +43,10 @@ public class SampleResource {
   }
 
   @GET
+  @LRA(value = LRA.Type.MANDATORY)
   @Path("hello")
   @Produces("text/plain")
-  @LRA(value = LRA.Type.MANDATORY)
+  @Transactional
   public String hello() {
     return "World";
   }

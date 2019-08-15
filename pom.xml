@@ -136,12 +136,6 @@
       <artifactId>javax.transaction-api</artifactId>
       <scope>provided</scope>
     </dependency>
-    
-    <dependency>
-      <groupId>org.eclipse.microprofile.lra</groupId>
-      <artifactId>microprofile-lra-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
 
 
     <!-- Compile-scoped dependencies. -->
@@ -152,6 +146,12 @@
       <artifactId>helidon-microprofile-2.2</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>org.eclipse.microprofile.lra</groupId>
+      <artifactId>microprofile-lra-api</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    
     <dependency>
       <groupId>org.jboss.narayana.rts</groupId>
       <artifactId>lra-filters</artifactId>
@@ -194,6 +194,16 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+            </manifest>
+          </archive>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.jboss.jandex</groupId>

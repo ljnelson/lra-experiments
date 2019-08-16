@@ -202,6 +202,7 @@
             <manifest>
               <addClasspath>true</addClasspath>
               <classpathPrefix>libs</classpathPrefix>
+              <mainClass>io.helidon.microprofile.server.Main</mainClass>
             </manifest>
           </archive>
         </configuration>

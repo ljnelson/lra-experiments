@@ -63,7 +63,7 @@
       <dependency>
         <groupId>org.eclipse.microprofile.lra</groupId>
         <artifactId>microprofile-lra-api</artifactId>
-        <version>1.0-20190801.113716-482</version>
+        <version>1.0-20190801.113716-482</version> <!-- The pinned snapshot used by Narayana 5.9.6.Final. -->
       </dependency>
 
       <dependency>
@@ -186,11 +186,11 @@
             <configuration>
               <outputDirectory>${project.build.directory}/libs</outputDirectory>
               <overWriteReleases>false</overWriteReleases>
-              <overWriteSnapshots>false</overWriteSnapshots>
-              <overWriteIfNewer>true</overWriteIfNewer>
+              <overWriteSnapshots>true</overWriteSnapshots>
               <overWriteIfNewer>true</overWriteIfNewer>
               <includeScope>runtime</includeScope>
               <excludeScope>test</excludeScope>
+              <useBaseVersion>false</useBaseVersion>
             </configuration>
           </execution>
         </executions>
